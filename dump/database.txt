@@ -1,0 +1,7 @@
+don.oussama.97@locantofuck.top
+
+Server: sql10.freemysqlhosting.net
+Name: sql10173456
+Username: sql10173456
+Password: 9bG3ZVW76Y
+Port number: 3306

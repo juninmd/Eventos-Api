@@ -6,12 +6,23 @@ module.exports = {
     }
 };
 function getBanco() {
-    console.log("[MYSQL] Conectado a localhost");
+    if (process.env.DEBUG) {
+        console.log("[MYSQL] Conectado a localhost");
+        return {
+            host: 'localhost',
+            user: 'root',
+            database: 'eventos',
+            password: '',
+            port: 5500
+        }
+    }
+
+    console.log("[MYSQL] Connection Free");
     return {
-        host: 'localhost',
-        user: 'root',
-        database: 'eventos',
-        password: '',
-        port: 5500
+        host: 'sql10.freemysqlhosting.net',
+        user: 'sql10173456',
+        database: 'sql10173456',
+        password: '9bG3ZVW76Y',
+        port: 3306
     }
 }
