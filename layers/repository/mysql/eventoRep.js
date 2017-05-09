@@ -10,7 +10,7 @@ module.exports = {
     getAll: () => {
         return new Promise((resolve, reject) => {
             mysql.executeString("MYSQL", "SELECT * FROM evento ",
-                (err, result) => err ? reject(err) : resolve(result));
+                (err, result) => err ? reject(err) : resolve(result.content));
         });
     },
     insert: (body) => {
