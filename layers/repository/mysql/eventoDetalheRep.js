@@ -3,7 +3,7 @@ var mysql = require('./config/initMysql.js');
 module.exports = {
     getById: (id) => {
         return new Promise((resolve, reject) => {
-            mysql.executeString("MYSQL", "SELECT * FROM evento_detalhe WHERE IDDETALHE =  " + id,
+            mysql.executeString("MYSQL", "SELECT * FROM evento_detalhe WHERE IDEVENTO =  " + id,
                 (err, result) => err ? reject(err) : resolve(result.content));
         });
     },

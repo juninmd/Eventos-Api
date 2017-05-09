@@ -4,7 +4,10 @@ module.exports = {
     getById: (id) => {
         return new Promise((resolve, reject) => {
             mysql.executeString("MYSQL", "SELECT * FROM evento WHERE IDEVENTO =  " + id,
-                (err, result) => err ? reject(err) : resolve(result.content));
+                (err, result) => err ? reject(err) :
+                    result.content.length == 0 ?
+                        reject({ message: { userMessage: "Objeto não encontrado" } })
+                        : resolve(result.content[0]));
         });
     },
     getAll: () => {
