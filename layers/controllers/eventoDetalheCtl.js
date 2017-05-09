@@ -1,7 +1,7 @@
 var eventoDetRep = require('../repository/mysql/eventoDetalheRep.js');
 
 module.exports = (app) => {
-    app.get('/eventos', (req, res) => {
+    app.get('/eventos/detalhe', (req, res) => {
         eventoDetRep.getAll()
             .then(q => res.send(q))
             .catch(err => {
@@ -9,7 +9,7 @@ module.exports = (app) => {
             });
     });
 
-    app.get('/eventos/:ID', (req, res) => {
+    app.get('/eventos/detalhe/:ID', (req, res) => {
         eventoDetRep.getById(req.params.ID)
             .then(q => res.send(q))
             .catch(err => {
@@ -18,7 +18,7 @@ module.exports = (app) => {
     });
 
 
-    app.post('/eventos/', (req, res) => {
+    app.post('/eventos/detalhe/', (req, res) => {
         eventoDetRep.insert(req.body)
             .then(q => res.send(q))
             .catch(err => {
@@ -26,7 +26,7 @@ module.exports = (app) => {
             });
     });
 
-    app.put('/eventos/', (req, res) => {
+    app.put('/eventos/detalhe/', (req, res) => {
         eventoDetRep.update(req.body)
             .then(q => res.send(q))
             .catch(err => {
@@ -34,7 +34,7 @@ module.exports = (app) => {
             });
     });
 
-    app.delete('/eventos/:ID', (req, res) => {
+    app.delete('/eventos/detalhe/:ID', (req, res) => {
         eventoDetRep.delete(req.para.ID)
             .then(q => res.send(q))
             .catch(err => {
