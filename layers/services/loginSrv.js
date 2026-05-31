@@ -15,7 +15,7 @@ module.exports = {
                 return { message: { userMessage: 'Senha inválida!' }, statusCode: 401 };
             })
             .catch(err => {
-                return { message: { userMessage: 'Falha ao efetuar login!', devMessage: err.toString() }, statusCode: 404 };
+                return { message: { userMessage: 'Falha ao efetuar login!' }, statusCode: 500 };
             });
     },
     insert: (body) => {

@@ -1,3 +1,30 @@
 {
-  "extends": ["config:js-lib"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:js-lib",
+    "helpers:pinGitHubActionDigests",
+    ":enablePreCommit",
+    ":pinDependencies",
+    ":separateMajorMinor"
+  ],
+  "labels": ["dependencies", "security"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["dependencies", "security", "breaking"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": true
+  },
+  "schedule": ["every weekend"]
 }

@@ -16,6 +16,9 @@ module.exports = function (connection) {
         modules.execute = function (rm, table, object, callback) {
             execute(connection, rm, table, object, callback);
         },
+        modules.executeQuery = function (rm, query, params, callback) {
+            executeQuery(connection, rm, query, params, callback);
+        },
         modules.executeTransaction = function (rm, table, object, callback) {
             executeTransaction(connection, rm, table, object, callback);
         }
@@ -69,6 +72,18 @@ function executeTransaction(connection, rm, table, object, callback) {
                 return;
             }
         }
+    });
+}
+
+function executeQuery(connection, rm, query, params, callback) {
+    connection.query(query, params, function (err, rows, fields) {
+        if (err) {
+            connection.end();
+            callback(rmUtil.returnError(rm, 500, "Ocorreu um problema com essa operação, tente novamente.", err.message), null);
+            return;
+        }
+        connection.end();
+        callback(null, { metaData: fields, content: rows });
     });
 }
 

@@ -2,8 +2,29 @@
 on:
   push:
     branches: [main, master]
+  pull_request:
+    branches: [main, master]
   schedule:
     - cron: '0 0 * * 1'
 jobs:
   gitleaks:
     uses: juninmd/base-actions/.github/workflows/reusable-security-scan.yml@main
+  npm-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: npm audit --audit-level=high
+        continue-on-error: true
+  dependency-review:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high

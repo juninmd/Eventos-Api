@@ -9,6 +9,9 @@ module.exports = {
     execute: function (databaseName, table, object, callback) {
         return execute(databaseName, table, object, callback);
     },
+    executeQuery: function (databaseName, query, params, callback) {
+        return executeQuery(databaseName, query, params, callback);
+    },
     executeProcedure: function (databaseName, procedure, array, callback) {
         return executeProcedure(databaseName, procedure, array, callback)
     },
@@ -27,6 +30,13 @@ function execute(databaseName, table, object, callback) {
     var rm = requestMessage(200, '', '', '', table);
     MySqlInit(databaseName)
         .then(mysql => mysql.execute(rm, table, object, callback))
+        .catch(err => callback(err, null));
+}
+
+function executeQuery(databaseName, query, params, callback) {
+    var rm = requestMessage(200, '', '', params ? params.toString() : '', query);
+    MySqlInit(databaseName)
+        .then(mysql => mysql.executeQuery(rm, query, params, callback))
         .catch(err => callback(err, null));
 }
 

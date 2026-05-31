@@ -1,3 +1,28 @@
+# Dependencies
 /node_modules
+
+# IDE
 /.vscode
+
+# Uploads
 /upload
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+secrets/
+config/secrets.yml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
