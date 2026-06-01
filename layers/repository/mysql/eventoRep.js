@@ -24,7 +24,7 @@ module.exports = {
     },
     update: (body) => {
         return new Promise((resolve, reject) => {
-            mysql.execute("MYSQL", "UPDATE evento SET ? WHERE IDEVENTO = ?",
+            mysql.executeQuery("MYSQL", "UPDATE evento SET ? WHERE IDEVENTO = ?",
                 [{ NOME: body.NOME, DATA: body.DATA, DESCRICAO: body.DESCRICAO }, body.IDEVENTO],
                 (err, result) => err ? reject(err) : resolve(result));
         });
