@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:4500').split(',');
+    const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:4500').split(',').map(o => o.trim());
 
     app.use((req, res, next) => {
         const origin = req.headers.origin;
