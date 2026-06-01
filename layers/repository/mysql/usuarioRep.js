@@ -25,7 +25,7 @@ module.exports = {
     },
     update: (body) => {
         return new Promise((resolve, reject) => {
-            mysql.execute("MYSQL", "UPDATE usuario SET ? WHERE EMAIL = ?", [{ SENHA: body.SENHA }, body.EMAIL],
+            mysql.executeQuery("MYSQL", "UPDATE usuario SET ? WHERE EMAIL = ?", [{ SENHA: body.SENHA }, body.EMAIL],
                 (err, result) => err ? reject(err) : resolve(result));
         });
     }
