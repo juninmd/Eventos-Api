@@ -1,3 +1,30 @@
 /node_modules
 /.vscode
 /upload
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+*.key
+*.pem
+*.p12
+*.cert
+*.keystore
+secrets/
+config/secrets.yml
+
+# Database dumps
+/dump/
+
+# IDE and OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+*.sublime-project
+*.sublime-workspace

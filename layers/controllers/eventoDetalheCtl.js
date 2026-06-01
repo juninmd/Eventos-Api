@@ -35,7 +35,7 @@ module.exports = (app) => {
     });
 
     app.delete('/eventos/detalhe/:ID', (req, res) => {
-        eventoDetRep.delete(req.para.ID)
+        eventoDetRep.delete(req.params.ID)
             .then(q => res.send(q))
             .catch(err => {
                 return res.status(err.statusCode || 500).send(err);

@@ -4,15 +4,15 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "security"
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-  - package-ecosystem: "docker"
-    directory: "/"
-    schedule:
-      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "github-actions"
