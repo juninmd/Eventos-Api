@@ -1,9 +1,10 @@
-var express = require("express");
-var helmet = require("helmet");
-var rateLimit = require("express-rate-limit");
-var app = express();
-var webconfig = require('./webconfig.js');
-var expressLoad = require('express-load');
+import express from "express";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import webconfig from './webconfig';
+import expressLoad from 'express-load';
+
+const app = express();
 
 app.use(helmet());
 
@@ -26,4 +27,4 @@ app.listen(webconfig.portApi, () => {
     console.log(`[Eventos - API] - Ativo :D | ${webconfig.urlApi}:${webconfig.portApi}`);
 });
 
-module.exports = app;
+export default app;

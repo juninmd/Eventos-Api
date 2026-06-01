@@ -1,4 +1,4 @@
-module.exports = {
+export const config = {
     urlApi: process.env.URL_API || 'http://localhost',
     portApi: parseInt(process.env.PORT, 10) || 4500,
     dataConfig: {
@@ -11,3 +11,5 @@ module.exports = {
         }
     }
 };
+
+export default config;

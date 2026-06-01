@@ -1,7 +1,7 @@
-var mysql = require('./config/initMysql.js');
+import mysql from './config/initMysql';
 
-module.exports = {
-    getById: (id) => {
+export default {
+    getById: (id: any) => {
         return new Promise((resolve, reject) => {
             mysql.executeQuery("MYSQL", "SELECT * FROM evento WHERE IDEVENTO = ?", [id],
                 (err, result) => err ? reject(err) :
@@ -16,20 +16,20 @@ module.exports = {
                 (err, result) => err ? reject(err) : resolve(result.content));
         });
     },
-    insert: (body) => {
+    insert: (body: any) => {
         return new Promise((resolve, reject) => {
             mysql.execute("MYSQL", "INSERT INTO evento SET ?", { NOME: body.NOME, DATA: body.DATA, DESCRICAO: body.DESCRICAO },
                 (err, result) => err ? reject(err) : resolve(result));
         });
     },
-    update: (body) => {
+    update: (body: any) => {
         return new Promise((resolve, reject) => {
             mysql.executeQuery("MYSQL", "UPDATE evento SET ? WHERE IDEVENTO = ?",
                 [{ NOME: body.NOME, DATA: body.DATA, DESCRICAO: body.DESCRICAO }, body.IDEVENTO],
                 (err, result) => err ? reject(err) : resolve(result));
         });
     },
-    delete: (id) => {
+    delete: (id: any) => {
         return new Promise((resolve, reject) => {
             mysql.executeQuery("MYSQL", "DELETE FROM evento WHERE IDEVENTO = ?", [id],
                 (err, result) => err ? reject(err) : resolve(result));

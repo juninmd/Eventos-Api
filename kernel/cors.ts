@@ -1,7 +1,7 @@
-module.exports = (app) => {
+export default (app: any) => {
     const allowedOrigins = (process.env.CORS_ORIGINS || 'http://localhost:4500').split(',').map(o => o.trim());
 
-    app.use((req, res, next) => {
+    app.use((req: any, res: any, next: any) => {
         const origin = req.headers.origin;
         if (origin && (allowedOrigins.includes(origin) || allowedOrigins.includes('*'))) {
             res.header("Access-Control-Allow-Origin", origin);

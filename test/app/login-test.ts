@@ -1,6 +1,6 @@
-var request = require('supertest');
-var app = require('../../app');
-var should = require("should");
+import request from 'supertest';
+import app from '../../app';
+import should from 'should';
 
 describe("--= Login =--", () => {
 
@@ -10,10 +10,11 @@ describe("--= Login =--", () => {
             .send({ EMAIL: 'RE_COUTO', SENHA: '123' })
             .expect("Content-type", /json/)
             .expect(200)
-            .end((err, res) => {
+            .end((err: any, res: any) => {
                 if (err) return done(err);
                 res.status.should.equal(200);
                 done();
             });
     });
+
 });

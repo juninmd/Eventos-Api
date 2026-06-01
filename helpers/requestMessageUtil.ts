@@ -1,8 +1,8 @@
 /**
  * Módulo de validações para a request message
  */
-module.exports = {
-    returnError: function (rm, statusCode, userMessage, developerMessage) {
+export default {
+    returnError: function (rm: any, statusCode: number, userMessage: string, developerMessage: string) {
         rm.content = null;
         rm.message = {
             developerMessage: developerMessage,
