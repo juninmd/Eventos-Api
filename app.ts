@@ -1,8 +1,8 @@
-import * as express from "express";
-import * as helmet from "helmet";
-import * as rateLimit from "express-rate-limit";
-import * as webconfig from './webconfig';
-import * as expressLoad from 'express-load';
+import express from "express";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import webconfig from './webconfig';
+import expressLoad from 'express-load';
 
 const app = express();
 
