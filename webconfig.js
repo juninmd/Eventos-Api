@@ -1,28 +1,13 @@
 module.exports = {
-    urlApi: 'http://localhost',
-    portApi: process.env.PORT || 4500,
+    urlApi: process.env.URL_API || 'http://localhost',
+    portApi: parseInt(process.env.PORT, 10) || 4500,
     dataConfig: {
-        MYSQL: getBanco()
-    }
-};
-function getBanco() {
-    if (process.env.DEBUG) {
-        console.log("[MYSQL] Conectado a localhost");
-        return {
-            host: 'localhost',
-            user: 'root',
-            database: 'eventos',
-            password: '',
-            port: 5500
+        MYSQL: {
+            host: process.env.MYSQL_HOST || 'localhost',
+            user: process.env.MYSQL_USER || 'root',
+            database: process.env.MYSQL_DATABASE || 'eventos',
+            password: process.env.MYSQL_PASSWORD || '',
+            port: parseInt(process.env.MYSQL_PORT, 10) || 3306
         }
     }
-
-    console.log("[MYSQL] Connection Free");
-    return {
-        host: 'sql10.freemysqlhosting.net',
-        user: 'sql10173456',
-        database: 'sql10173456',
-        password: '9bG3ZVW76Y',
-        port: 3306
-    }
-}
+};

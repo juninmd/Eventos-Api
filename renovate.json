@@ -1,3 +1,22 @@
 {
-  "extends": ["config:js-lib"]
+  "extends": [
+    "config:js-lib",
+    "security:openssf-scorecard",
+    ":pinAllExceptPeerDependencies"
+  ],
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "addLabels": ["security"]
+  }
 }

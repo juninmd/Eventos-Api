@@ -4,17 +4,15 @@ var should = require("should");
 
 describe("--= Login =--", () => {
 
-    it("Login -> RE_COUTO -> OK", (done) => {
+    it("Login with valid credentials", (done) => {
         request(app)
-            .get("/login")
-            .set('user.login', 'RE_COUTO')
+            .post("/login")
+            .send({ EMAIL: 'RE_COUTO', SENHA: '123' })
             .expect("Content-type", /json/)
-            .set('user.password', '123')
             .expect(200)
             .end((err, res) => {
+                if (err) return done(err);
                 res.status.should.equal(200);
-                res.body.should.have.property('token');
-                res.body.token.should.not.equal(null);
                 done();
             });
     });

@@ -3,13 +3,13 @@ var mysql = require('./config/initMysql.js');
 module.exports = {
     getById: (EMAIL) => {
         return new Promise((resolve, reject) => {
-            mysql.executeString("MYSQL", `SELECT * FROM usuario WHERE EMAIL = '${EMAIL}'`,
+            mysql.executeQuery("MYSQL", "SELECT * FROM usuario WHERE EMAIL = ?", [EMAIL],
                 (err, result) => err ? reject(err) : resolve(result.content));
         });
     },
     getAll: () => {
         return new Promise((resolve, reject) => {
-            mysql.executeString("MYSQL", "SELECT * FROM usuario ",
+            mysql.executeQuery("MYSQL", "SELECT * FROM usuario ",
                 (err, result) => err ? reject(err) : resolve(result));
         });
     },
@@ -25,7 +25,7 @@ module.exports = {
     },
     update: (body) => {
         return new Promise((resolve, reject) => {
-            mysql.execute("MYSQL", `UPDATE usuario SET ? WHERE EMAIL = '${body.EMAIL}'`, { EMAIL: body.EMAIL, SENHA: body.SENHA },
+            mysql.execute("MYSQL", "UPDATE usuario SET ? WHERE EMAIL = ?", [{ SENHA: body.SENHA }, body.EMAIL],
                 (err, result) => err ? reject(err) : resolve(result));
         });
     }

@@ -1,17 +1,13 @@
 module.exports = (app) => {
-    /**
-     * Tratamento de expections
-     */
     app.use((err, req, res, next) => {
-        console.log(`-> Erro: ${err} | Cliente: ${req._remoteAddress} | URL: ${req.protocol + '://' + req.get('host') + req.originalUrl}`);
+        console.error(`Erro: ${err.message || err} | URL: ${req.method} ${req.originalUrl}`);
 
         if (res.headersSent || res.finished)
             return;
 
-        res.status(500).send({
+        res.status(err.status || 500).send({
             message: {
-                developerMessage: `-> Erro: ${err}`,
-                userMessage: `Falha inesperada pela aplicação | erro interno`
+                userMessage: 'Falha inesperada pela aplicação | erro interno'
             },
             content: null,
             isSuccess: false,
@@ -20,6 +16,6 @@ module.exports = (app) => {
             },
             statusCode: err.status || 500,
         });
-          next();
+        next();
     });
 };
