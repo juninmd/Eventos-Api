@@ -1,6 +1,6 @@
-var bodyParser = require('body-parser')
+import * as bodyParser from 'body-parser';
 
-module.exports = (app) => {
+export default (app: any) => {
     app.use(bodyParser.json({ limit: '10mb' }));
     app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 };

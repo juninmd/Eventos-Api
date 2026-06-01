@@ -1,5 +1,5 @@
-module.exports = (app) => {
-    app.use((err, req, res, next) => {
+export default (app: any) => {
+    app.use((err: any, req: any, res: any, next: any) => {
         console.error(`Erro: ${err.message || err} | URL: ${req.method} ${req.originalUrl}`);
 
         if (res.headersSent || res.finished)

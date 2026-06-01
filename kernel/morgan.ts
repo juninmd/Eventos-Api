@@ -1,5 +1,5 @@
-var morgan = require('morgan');
+import * as morgan from 'morgan';
 
-module.exports = (app) => {
+export default (app: any) => {
     app.use(morgan(':method | :status | HTTP :http-version | Resposta: :response-time ms | Data: :date[web] | URL: :url'));
 };
