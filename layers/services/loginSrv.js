@@ -24,8 +24,8 @@ module.exports = {
     insert: (body) => {
         return bcrypt.hash(body.SENHA, 10)
             .then(hash => {
-                body.SENHA = hash;
-                return usuarioRep.insert(body);
+                const newUser = { ...body, SENHA: hash };
+                return usuarioRep.insert(newUser);
             });
     }
 
