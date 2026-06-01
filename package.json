@@ -5,7 +5,7 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --loader ts-node/esm test/**/*.ts",
     "start": "ts-node app.ts",
     "build": "tsc"
   },
